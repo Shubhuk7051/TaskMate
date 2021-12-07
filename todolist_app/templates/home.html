@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Welcome to TaskMate!</title>
+{% endblock title %}
+
+{% block content %}
+    <div class='container'>
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <img src="{% static 'images/stickynotes1.jpg' %}" alt="Notes" class="rounded shadow" width="350" height="260">
+            </div>
+            <div class="col-lg-4">
+                <img src="{% static 'images/stickynotes2.jpg' %}" alt="Notes" class="rounded shadow " width="350" height="260">
+            </div>
+            <div class="col-lg-4">
+                <img src="{% static 'images/stickynotes3.jpg' %}" alt="Notes" class="rounded shadow" width="350" height="260">
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-10 offset-md-1">
+                <center><p class="h1 text-primary">Quick And Easy to Use, AnyTime, Anywhere!</p></center>
+                <center><p class="h2 mt-3">"Plan Your Day Better, Get Your Life Oraganized"</p></center>
+                <center><p class="h5">TASKMATE Lets You Keep Track Of Your Task in One Place</p></center>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+            <center><a href="{% url 'todolist' %}"<button type="button" class="btn btn-primary btn-lg mt-4 shadow">Let's Started</button></a></center>
+        {%else%}
+            <a class="nav-link" href="{% url 'register' %}">
+                <center><button class="btn btn-primary" type="submit">Register</button></center>
+            </a>
+            <a class="nav-link" href="{% url 'login' %}">
+               <center><button class="btn btn-success" type="submit">Login</button></center>
+            </a>
+        {% endif %}
+        
+    </div>
+{% endblock content %}
